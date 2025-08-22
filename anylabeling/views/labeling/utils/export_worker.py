@@ -409,7 +409,7 @@ class ExportWorker(QRunnable):
                     all_image_paths[-1] = output_img_name
 
                 image_output_path = osp.join(split_dir, output_img_name)
-                shutil.copy2(image_path, image_output_path)
+                #shutil.copy2(image_path, image_output_path)
 
             self.signals.progress.emit(
                 50,  # Start second half of progress

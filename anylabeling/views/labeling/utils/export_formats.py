@@ -215,7 +215,7 @@ class FormatExporter:
             coco_dict["images"].append(
                 {
                     "id": image_id,
-                    "file_name": image_name,
+                    "file_name": "images/{0}".format(image_name),
                     "width": image_width,
                     "height": image_height,
                     "license": 1,
