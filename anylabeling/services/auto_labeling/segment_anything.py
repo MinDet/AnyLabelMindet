@@ -218,7 +218,12 @@ class SegmentAnything(Model):
         """
         Predict shapes from image
         """
-        if image is None or not self.marks:
+        #check if there is any positive points
+        has_positive_marks = False
+        for mark in self.marks:
+            if mark["label"] == 1:
+                has_positive_marks = True
+        if image is None or not self.marks or has_positive_marks is False:
             return AutoLabelingResult([], replace=False)
 
         shapes = []

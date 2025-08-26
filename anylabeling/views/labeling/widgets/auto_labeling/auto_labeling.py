@@ -74,18 +74,19 @@ class AutoLabelingWidget(QWidget):
                 AutoLabelingMode.ADD, AutoLabelingMode.POINT
             )
         )
-        self.button_add_point.setShortcut("Q")
+        self.button_remove_point.setShortcut("E")
         self.button_remove_point.clicked.connect(
             lambda: self.set_auto_labeling_mode(
                 AutoLabelingMode.REMOVE, AutoLabelingMode.POINT
             )
         )
-        self.button_remove_point.setShortcut("E")
+        self.button_add_point.setShortcut("Q")
         self.button_add_rect.clicked.connect(
             lambda: self.set_auto_labeling_mode(
                 AutoLabelingMode.ADD, AutoLabelingMode.RECTANGLE
             )
         )
+        self.button_clear.setShortcut("C")
         self.button_clear.clicked.connect(self.clear_auto_labeling_action_requested)
         self.button_finish_object.clicked.connect(
             self.finish_auto_labeling_object_action_requested
