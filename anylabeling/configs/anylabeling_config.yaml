@@ -85,8 +85,8 @@ shortcuts:
   delete_file: Ctrl+Delete
   toggle_polygons: B
 
-  open_next: [D, Ctrl+Shift+D]
-  open_prev: [A, Ctrl+Shift+A]
+  open_next: Ctrl+Shift+D
+  open_prev: Ctrl+Shift+A
 
   zoom_in: [Ctrl++, Ctrl+=]
   zoom_out: Ctrl+-
@@ -100,8 +100,8 @@ shortcuts:
   create_line: null
   create_point: null
   create_linestrip: null
-  edit_polygon: Ctrl+J
-  delete_polygon: Delete
+  edit_polygon: Escape
+  delete_polygon: D
   duplicate_polygon: Ctrl+D
   copy_polygon: Ctrl+C
   paste_polygon: Ctrl+V

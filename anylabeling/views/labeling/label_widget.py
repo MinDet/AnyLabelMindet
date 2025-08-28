@@ -9,6 +9,7 @@ import webbrowser
 import imgviz
 import natsort
 from PyQt5 import QtCore, QtGui, QtWidgets
+from PyQt5.QtGui import QKeySequence
 from PyQt5.QtCore import Qt, pyqtSlot
 from PyQt5.QtWidgets import (
     QHBoxLayout,
@@ -296,7 +297,7 @@ class LabelingWidget(LabelDialog):
         open_next_image = create_action(
             self.tr("&Next Image"),
             self.open_next_image,
-            shortcuts["open_next"],
+            QKeySequence("Right"),
             "next",
             self.tr("Open next (hold Ctrl+Shift to copy labels)"),
             enabled=False,
@@ -304,7 +305,7 @@ class LabelingWidget(LabelDialog):
         open_prev_image = create_action(
             self.tr("&Prev Image"),
             self.open_prev_image,
-            shortcuts["open_prev"],
+            QKeySequence("Left"),
             "prev",
             self.tr("Open prev (hold Ctrl+Shift to copy labels)"),
             enabled=False,
@@ -441,7 +442,7 @@ class LabelingWidget(LabelDialog):
         edit_mode = create_action(
             self.tr("Edit Object"),
             self.set_edit_mode,
-            shortcuts["edit_polygon"],
+            "Escape", #for some reason it is hard bound to Ctrl + J in the yaml file even though i changed the yaml
             "edit",
             self.tr("Move and edit the selected polygons"),
             enabled=False,
@@ -466,7 +467,7 @@ class LabelingWidget(LabelDialog):
         delete = create_action(
             self.tr("Delete"),
             self.delete_selected_shape,
-            shortcuts["delete_polygon"],
+            "D",
             "cancel",
             self.tr("Delete the selected polygons"),
             enabled=False,
