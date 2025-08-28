@@ -177,7 +177,7 @@ class LabelFile:
             data[key] = value
         try:
             with io_open(filename, "w") as f:
-                json.dump(data, f, ensure_ascii=False, indent=2)
+                json.dump(data, f, ensure_ascii=False)
             self.filename = filename
         except Exception as e:  # noqa
             raise LabelFileError(e) from e

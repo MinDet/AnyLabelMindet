@@ -26,7 +26,7 @@ exe = EXE(
     a.binaries,
     a.zipfiles,
     a.datas,
-    name='anylabeling',
+    name='MinDetLabeling',
     debug=False,
     strip=False,
     upx=False,
@@ -36,7 +36,7 @@ exe = EXE(
 )
 app = BUNDLE(
     exe,
-    name='AnyLabeling.app',
+    name='MinDetLabeling.app',
     icon='anylabeling/resources/images/icon.icns',
     bundle_identifier=None,
     info_plist={'NSHighResolutionCapable': 'True'},

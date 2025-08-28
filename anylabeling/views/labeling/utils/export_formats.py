@@ -271,10 +271,12 @@ class FormatExporter:
 
                     # Calculate polygon area
                     area = 0
-                    for i in range(len(points)):
+                    n = len(points)
+                    for i in range(n):
                         x1, y1 = points[i]
-                        x2, y2 = points[(i + 1) % len(points)]
-                        area += 0.5 * abs(x1 * y2 - x2 * y1)
+                        x2, y2 = points[(i + 1) % n]  # wraps around to the first point
+                        area += (x1 * y2) - (x2 * y1)
+                    area = abs(area)/2
 
                 coco_dict["annotations"].append(
                     {
@@ -282,7 +284,7 @@ class FormatExporter:
                         "image_id": image_id,
                         "category_id": category_id,
                         "segmentation": segmentation,
-                        "area": area,
+                        "area": int(area),
                         "bbox": bbox,
                         "iscrowd": 0,
                     }
@@ -292,7 +294,7 @@ class FormatExporter:
 
         if output_path:
             with open(output_path, "w") as f:
-                json.dump(coco_dict, f, indent=2)
+                json.dump(coco_dict, f)
 
         return coco_dict
 
@@ -374,6 +376,6 @@ class FormatExporter:
 
         if output_path:
             with open(output_path, "w") as f:
-                json.dump(createml_list, f, indent=2)
+                json.dump(createml_list, f)
 
         return createml_list

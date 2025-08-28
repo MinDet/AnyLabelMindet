@@ -75,6 +75,7 @@ class LabelingWidget(LabelDialog):
         self.image_data = None
         self.label_file = None
         self.other_data = {}
+        self.toggle_polygons_state = True
 
         # see configs/anylabeling_config.yaml for valid configuration
         if config is None:
@@ -521,19 +522,22 @@ class LabelingWidget(LabelDialog):
         )
 
         hide_all = create_action(
-            self.tr("&Hide\nPolygons"),
-            functools.partial(self.toggle_polygons, False),
+            self.tr("&Hide or Show\nPolygons"),
+            functools.partial(self.toggle_polygons),
+            shortcuts["toggle_polygons"],
             icon="eye",
-            tip=self.tr("Hide all polygons"),
+            tip=self.tr("Hide or Show all polygons"),
             enabled=False,
         )
+        """
         show_all = create_action(
             self.tr("&Show\nPolygons"),
-            functools.partial(self.toggle_polygons, True),
+            functools.partial(self.toggle_polygons),
             icon="eye",
             tip=self.tr("Show all polygons"),
             enabled=False,
         )
+        """
 
         documentation = create_action(
             self.tr("&Documentation"),
@@ -871,7 +875,7 @@ class LabelingWidget(LabelDialog):
                 edit_mode,
                 brightness_contrast,
             ),
-            on_shapes_present=(save_as, hide_all, show_all),
+            on_shapes_present=(save_as, hide_all),
             group_selected_shapes=group_selected_shapes,
             ungroup_selected_shapes=ungroup_selected_shapes,
         )
@@ -978,7 +982,6 @@ class LabelingWidget(LabelDialog):
                 fill_drawing,
                 None,
                 hide_all,
-                show_all,
                 None,
                 zoom_in,
                 zoom_out,
@@ -2031,9 +2034,14 @@ class LabelingWidget(LabelDialog):
         contrast = dialog.slider_contrast.value()
         self.brightness_contrast_values[self.filename] = (brightness, contrast)
 
-    def toggle_polygons(self, value):
-        for item in self.label_list:
-            item.setCheckState(Qt.Checked if value else Qt.Unchecked)
+    def toggle_polygons(self):
+        self.toggle_polygons_state = not self.toggle_polygons_state
+        if self.toggle_polygons_state is True:
+            for item in self.label_list:
+                item.setCheckState(Qt.Checked)
+        else:
+            for item in self.label_list:
+                item.setCheckState(Qt.Unchecked)
 
     def get_next_files(self, filename, num_files):
         """Get the next files in the list."""
