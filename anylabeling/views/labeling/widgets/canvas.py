@@ -1089,7 +1089,8 @@ class Canvas(QtWidgets.QWidget):  # pylint: disable=too-many-public-methods, too
         """Key press event"""
         modifiers = ev.modifiers()
         key = ev.key()
-        if self.drawing():
+        
+        if self.drawing() and self.is_auto_labeling is False:
             if key == QtCore.Qt.Key_Escape and self.current:
                 self.current = None
                 self.drawing_polygon.emit(False)
@@ -1107,6 +1108,7 @@ class Canvas(QtWidgets.QWidget):  # pylint: disable=too-many-public-methods, too
                 self.move_by_keyboard(QtCore.QPointF(-MOVE_SPEED, 0.0))
             elif key == QtCore.Qt.Key_Right:
                 self.move_by_keyboard(QtCore.QPointF(MOVE_SPEED, 0.0))
+        
 
     # QT Overload
     def keyReleaseEvent(self, ev):

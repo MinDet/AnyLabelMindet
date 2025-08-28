@@ -3192,3 +3192,11 @@ class LabelingWidget(LabelDialog):
 
         # Save the dock state
         self.save_dock_state()
+
+    def keyPressEvent(self, ev):
+        """Key press event"""
+        modifiers = ev.modifiers()
+        key = ev.key()
+
+        if key == QtCore.Qt.Key_Escape:
+            pass #prevent from closing
