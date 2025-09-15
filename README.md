@@ -8,20 +8,11 @@
 ![](https://user-images.githubusercontent.com/18329471/234640541-a6a65fbc-d7a5-4ec3-9b65-55305b01a7aa.png)
 
 [![PyPI](https://img.shields.io/pypi/v/anylabeling)](https://pypi.org/project/anylabeling)
-[![license](https://img.shields.io/github/license/vietanhdev/anylabeling.svg)](https://github.com/vietanhdev/anylabeling/blob/master/LICENSE)
-[![open issues](https://isitmaintained.com/badge/open/vietanhdev/anylabeling.svg)](https://github.com/vietanhdev/anylabeling/issues)
-[![Pypi Downloads](https://pepy.tech/badge/anylabeling)](https://pypi.org/project/anylabeling/)
-[![Documentation](https://img.shields.io/badge/Read-Documentation-green)](https://anylabeling.nrl.ai/)
-[![Follow](https://img.shields.io/badge/+Follow-vietanhdev-blue)]([[https://anylabeling.nrl.ai/](https://twitter.com/vietanhdev)](https://twitter.com/vietanhdev))
 
 [![AnyLearning-Banner](https://github.com/user-attachments/assets/c2de3534-3e04-439b-bdca-19f6fcb9fc61)](https://anylearning.nrl.ai/)
 
 [![ai-flow 62b3c222](https://github.com/user-attachments/assets/a47a0eea-ec59-4c59-9733-737b1977e56b)](https://anylearning.nrl.ai/)
 
-
-<a href="https://youtu.be/5qVJiYNX5Kk">
-  <img alt="AnyLabeling" src="https://raw.githubusercontent.com/vietanhdev/anylabeling/master/assets/screenshot.png"/>
-</a>
 
 **Auto Labeling with Segment Anything**
 
@@ -39,15 +30,6 @@
 - [x] Auto-labeling YOLOv8, Segment Anything (SAM, SAM2).
 - [x] Text detection, recognition and KIE (Key Information Extraction) labeling.
 - [x] Multiple languages availables: English, Vietnamese, Chinese.
-
-## Install and Run
-
-### 1. Download and run executable
-
-- Download and run newest version from [Releases](https://github.com/vietanhdev/anylabeling/releases).
-- For MacOS:
-  - Download the folder mode build (`AnyLabeling-Folder.zip`) from [Releases](https://github.com/vietanhdev/anylabeling/releases)
-  - See [macOS folder mode instructions](docs/macos_folder_mode.md) for details
 
 ### Install from Pypi
 
@@ -128,14 +110,6 @@ bash build_executable.sh
 ```
 
 - Check the outputs in: `dist/`.
-
-## Contribution
-
-If you want to contribute to **AnyLabeling**, please read [Contribution Guidelines](https://anylabeling.nrl.ai/docs/contribution).
-
-## Star history
-
-[![Star History Chart](https://api.star-history.com/svg?repos=vietanhdev/anylabeling&type=Date)](https://star-history.com/#vietanhdev/anylabeling&Date)
 
 ## References
 
