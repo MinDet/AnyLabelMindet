@@ -549,6 +549,7 @@ class Canvas(QtWidgets.QWidget):  # pylint: disable=too-many-public-methods, too
 
     # QT Overload
     def mouseDoubleClickEvent(self, _):
+        return
         """Mouse double click event"""
         if self.is_loading:
             return
@@ -1109,7 +1110,6 @@ class Canvas(QtWidgets.QWidget):  # pylint: disable=too-many-public-methods, too
             elif key == QtCore.Qt.Key_Right:
                 self.move_by_keyboard(QtCore.QPointF(MOVE_SPEED, 0.0))
         
-
     # QT Overload
     def keyReleaseEvent(self, ev):
         """Key release event"""
@@ -1119,12 +1119,15 @@ class Canvas(QtWidgets.QWidget):  # pylint: disable=too-many-public-methods, too
                 self.snapping = True
         elif self.editing():
             if self.moving_shape and self.selected_shapes:
-                index = self.shapes.index(self.selected_shapes[0])
-                if self.shapes_backups[-1][index].points != self.shapes[index].points:
-                    self.store_shapes()
-                    self.shape_moved.emit()
+                try:
+                    index = self.shapes.index(self.selected_shapes[0])
+                    if self.shapes_backups[-1][index].points != self.shapes[index].points:
+                        self.store_shapes()
+                        self.shape_moved.emit()
 
-                self.moving_shape = False
+                    self.moving_shape = False
+                except:
+                    print("could not find self.shapes")
 
     def set_last_label(self, text, flags):
         """Set label and flags for last shape"""

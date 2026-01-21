@@ -1529,6 +1529,8 @@ class LabelingWidget(LabelDialog):
         return False
 
     def edit_label(self, item=None):
+        return #do nothing disable double click
+
         if item and not isinstance(item, LabelListWidgetItem):
             raise TypeError("item must be LabelListWidgetItem type")
 
