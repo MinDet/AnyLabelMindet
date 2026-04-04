@@ -316,7 +316,7 @@ class LabelingWidget(LabelDialog):
             shortcuts["save"],
             "save",
             self.tr("Save labels to file"),
-            enabled=False,
+            enabled=True,
         )
         save_as = create_action(
             self.tr("&Save As"),
@@ -324,7 +324,7 @@ class LabelingWidget(LabelDialog):
             shortcuts["save_as"],
             "save",
             self.tr("Save labels to a different file"),
-            enabled=False,
+            enabled=True,
         )
 
         delete_file = create_action(
@@ -1339,7 +1339,7 @@ class LabelingWidget(LabelDialog):
 
     def set_clean(self):
         self.dirty = False
-        self.actions.save.setEnabled(False)
+        #self.actions.save.setEnabled(False)
         self.actions.create_mode.setEnabled(True)
         self.actions.create_rectangle_mode.setEnabled(True)
         self.actions.create_cirle_mode.setEnabled(True)
@@ -2433,7 +2433,8 @@ class LabelingWidget(LabelDialog):
             self.file_list_widget.repaint()
 
     def save_file(self, _value=False):
-        assert not self.image.isNull(), "cannot save empty image"
+        if self.image.isNull():
+            return
         if self.label_file:
             # DL20180323 - overwrite when in directory
             self._save_file(self.label_file.filename)
